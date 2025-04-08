@@ -3,20 +3,19 @@ import { StatusBar, Text, View } from "react-native";
 
 export default function Index() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Link href="/sign-in"> Sign In </Link>
-      <Link href="/explore"> Explore </Link>
-      <Link href="/profile"> Profile </Link>
-      <Link href="/properties/1"> Property </Link>
+    <View className="flex-1 items-center justify-center bg-white">
+      <Text className=" text-4xl font-bold text-danger font-rubik-extrabold mt-10 ">
+        NativeWind is working!
+      </Text>
 
-      <Text className=" text-4xl font-bold text-blue-400 mt-10 ">NativeWind is working!</Text>
-      <StatusBar  />
+      <View className="flex-row gap-4 mt-2">
+        <Link href="/sign-in"> Sign In </Link>
+        <Link href="/explore"> Explore </Link>
+        <Link href="/profile"> Profile </Link>
+        <Link href="/properties/1"> Property </Link>
+      </View>
+
+      <StatusBar />
     </View>
   );
 }
