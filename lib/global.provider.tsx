@@ -2,13 +2,13 @@ import React, { createContext, useContext, ReactNode } from "react";
 
 import { getCurrentUser } from "./appwrite";
 import { useAppwrite } from "./useAppwrite";
-import { Redirect } from "expo-router";
+// import { Redirect } from "expo-router";
 
 interface GlobalContextType {
   isLogged: boolean;
   user: User | null;
   loading: boolean;
-  refetch: () => void;
+  refetch: (newParams: Record<string, string | number>) => Promise<void>;
 }
 
 interface User {
@@ -20,11 +20,7 @@ interface User {
 
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
 
-interface GlobalProviderProps {
-  children: ReactNode;
-}
-
-export const GlobalProvider = ({ children }: GlobalProviderProps) => {
+export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const {
     data: user,
     loading,
@@ -32,18 +28,9 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
   } = useAppwrite({
     fn: getCurrentUser,
   });
-
   const isLogged = !!user;
-
   return (
-    <GlobalContext.Provider
-      value={{
-        isLogged,
-        user,
-        loading,
-        refetch,
-      }}
-    >
+    <GlobalContext.Provider value={{ isLogged, user, loading, refetch }}>
       {children}
     </GlobalContext.Provider>
   );
