@@ -1,3 +1,6 @@
+import { Card, FeaturedCard } from "@/components/card";
+import Filters from "@/components/filters";
+import Search from "@/components/search";
 import icons from "@/constants/icons";
 import { useGlobalContext } from "@/lib/global.provider";
 import {
@@ -11,12 +14,12 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
-  const { user, refetch } = useGlobalContext();
+  const { user } = useGlobalContext();
 
   return (
-    <SafeAreaView className="flex flex-col gap-3 h-full bg-white">
+    <SafeAreaView className="flex px-5 flex-col  h-full bg-white">
       <StatusBar barStyle="dark-content" className=" bg-white" />
-      <View className="px-5">
+      <View className="">
         <View className="flex flex-row items-center justify-between mt-5">
           <View className="flex flex-row">
             <Image
@@ -37,9 +40,11 @@ export default function Index() {
         </View>
       </View>
 
+      <Search />
+
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerClassName="pb-32 px-7"
+        contentContainerClassName="h-full"
       >
         <View className="my-5">
           <View className="flex flex-row items-center justify-between">
@@ -52,6 +57,33 @@ export default function Index() {
               </Text>
             </TouchableOpacity>
           </View>
+          <View className="flex flex-row gap-5 mt-5">
+            {/* <ScrollView horizontal showsHorizontalScrollIndicator={false} > */}
+            <FeaturedCard />
+            <FeaturedCard />
+
+            {/* </ScrollView> */}
+          </View>
+        </View>
+
+        <View className="flex flex-row items-center justify-between">
+          <Text className="text-xl font-rubik-bold text-black-300">
+            Our Recomendations
+          </Text>
+          <TouchableOpacity>
+            <Text className="text-base font-rubik-bold text-primary-300">
+              See all
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <Filters />
+
+        <View className="flex flex-row gap-2 mt-3">
+          {/* <ScrollView horizontal showsHorizontalScrollIndicator={false} > */}
+          <Card />
+          <Card />
+
+          {/* </ScrollView> */}
         </View>
       </ScrollView>
     </SafeAreaView>
