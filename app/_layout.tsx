@@ -2,9 +2,10 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { StatusBar } from "react-native";
 import "./global.css";
 
-import GlobalProvider from "@/lib/global.provider"; 
+import GlobalProvider from "@/lib/global.provider";
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -25,9 +26,10 @@ export default function RootLayout() {
   if (!fontsLoaded) {
     return null;
   }
-  
+
   return (
     <GlobalProvider>
+      <StatusBar barStyle="dark-content" />
       <Stack screenOptions={{ headerShown: false }} />
     </GlobalProvider>
   );
