@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { router, useLocalSearchParams } from "expo-router";
 import { Text, ScrollView, TouchableOpacity } from "react-native";
-
 import { categories } from "@/constants/data";
 
 const Filters = () => {
@@ -12,8 +11,8 @@ const Filters = () => {
 
   const handleCategoryPress = (category: string) => {
     if (selectedCategory === category) {
-      setSelectedCategory("");
-      router.setParams({ filter: "" });
+      setSelectedCategory("All");
+      router.setParams({ filter: "All" });
       return;
     }
 
