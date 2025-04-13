@@ -14,11 +14,11 @@ export const FeaturedCard = ({ item, onPress }: Props) => {
       onPress={onPress}
       className="flex flex-col items-start w-60 h-80 relative"
     >
-      {/* <Image   source={{ uri: item?.image || images.japan }} className="size-full w-full h-full rounded-2xl" /> */}
-      <Image
+      <Image   source={{ uri: item?.image }} className="size-full w-full h-full rounded-2xl" />
+      {/* <Image
         source={images.japan}
         className="size-full w-full h-full rounded-2xl"
-      />
+      /> */}
 
       <Image
         source={images.cardGradient}
@@ -67,11 +67,11 @@ export const Card = ({ item, onPress }: Props) => {
         </Text>
       </View>
 
-      {/* <Image
-        source={{ uri: item?.image || images.japan }}
+      <Image
+        source={{ uri: item?.image}}
         className="w-full h-40 rounded-lg"
-      /> */}
-      <Image source={images.japan} className="w-full h-40 rounded-lg" />
+      />
+      {/* <Image source={images.japan} className="w-full h-40 rounded-lg" /> */}
 
       <View className="flex flex-col mt-2">
         <Text className="text-base font-rubik-bold text-black-300">

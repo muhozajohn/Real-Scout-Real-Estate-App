@@ -1,30 +1,66 @@
+import { useEffect } from "react";
 import {
   FlatList,
   Image,
-  StatusBar,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
 
 import { SafeAreaView } from "react-native-safe-area-context";
-
 import icons from "@/constants/icons";
 import Filters from "@/components/filters";
 import Search from "@/components/search";
-import images from "@/constants/images";
 import { Card, FeaturedCard } from "@/components/card";
 import { useGlobalContext } from "@/lib/global.provider";
+import { router, useLocalSearchParams } from "expo-router";
+import { useAppwrite } from "@/lib/useAppwrite";
+import { getLatestProperties, getProperties } from "@/lib/appwrite";
+import NoResults from "@/components/no-results";
+import { CardSkeleton, FeaturedCardSkeleton } from "@/components/skelton";
 
 const Index = () => {
-    const { user } = useGlobalContext();
-  
+  const { user } = useGlobalContext();
+  const params = useLocalSearchParams<{ query?: string; filter?: string }>();
+
+  const { data: latestProperties, loading: latestPropertiesLoading } =
+    useAppwrite({
+      fn: getLatestProperties,
+    });
+
+  const {
+    data: properties,
+    loading,
+    refetch,
+  } = useAppwrite({
+    fn: getProperties,
+    params: {
+      filter: params.filter!,
+      query: params.query!,
+      limit: 6,
+    },
+    skip: true,
+  });
+
+  useEffect(() => {
+    refetch({
+      filter: params.filter!,
+      query: params.query!,
+      limit: 6,
+    });
+  }, [params.filter, params.query]);
+
+  const handleCardPress = (id: string) => router.push(`/properties/${id}`);
+
   return (
     <SafeAreaView className="h-full bg-white">
       <FlatList
-        data={[1, 2, 3, 4, 5]}
-        renderItem={({ item }) => <Card />}
-        keyExtractor={(item) => item.toString()}
+        data={properties || []}
+        renderItem={({ item }) => (
+          <Card item={item} onPress={() => handleCardPress(item.$id)} />
+        )}
+        keyExtractor={(item) => item?.$id}
+        ListEmptyComponent={loading ? <CardSkeleton /> : <NoResults />}
         showsVerticalScrollIndicator={false}
         columnWrapperClassName="flex gap-5 px-5"
         contentContainerClassName="pb-32"
@@ -64,9 +100,21 @@ const Index = () => {
                 </TouchableOpacity>
               </View>
               <FlatList
-                data={[1, 2, 3]}
-                renderItem={({ item }) => <FeaturedCard />}
-                keyExtractor={(item) => item.toString()}
+                data={ latestProperties || []}
+                renderItem={({ item }) => (
+                  <FeaturedCard
+                    item={item}
+                    onPress={() => handleCardPress(item.$id)}
+                  />
+                )}
+                ListEmptyComponent={
+                  latestPropertiesLoading ? (
+                    <FeaturedCardSkeleton />
+                  ) : (
+                    <NoResults />
+                  )
+                }
+                keyExtractor={(item) => item.$id}
                 showsHorizontalScrollIndicator={false}
                 horizontal
                 bounces={false}
