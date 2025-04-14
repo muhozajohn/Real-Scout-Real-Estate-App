@@ -2,7 +2,6 @@ import {
   Alert,
   Image,
   ScrollView,
-  StatusBar,
   Text,
   TouchableOpacity,
   View,
