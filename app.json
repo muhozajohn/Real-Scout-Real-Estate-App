@@ -15,7 +15,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.muhoza.RealScoutRealEstateApp"
     },
     "web": {
       "bundler": "metro",
@@ -45,10 +46,16 @@
             "./assets/fonts/Rubik-SemiBold.ttf"
           ]
         }
-      ]
+      ],
+      "expo-asset"
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6edb81f8-1850-4bfb-9e38-b98a0fa9d9b9"
+      }
     }
   }
 }
