@@ -2,7 +2,6 @@ import React, { createContext, useContext, ReactNode } from "react";
 
 import { getCurrentUser } from "./appwrite";
 import { useAppwrite } from "./useAppwrite";
-// import { Redirect } from "expo-router";
 
 interface GlobalContextType {
   isLogged: boolean;
@@ -28,7 +27,9 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   } = useAppwrite({
     fn: getCurrentUser,
   });
+  
   const isLogged = !!user;
+  
   return (
     <GlobalContext.Provider value={{ isLogged, user, loading, refetch }}>
       {children}
@@ -38,9 +39,9 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
 
 export const useGlobalContext = (): GlobalContextType => {
   const context = useContext(GlobalContext);
-  if (!context)
+  if (!context) {
     throw new Error("useGlobalContext must be used within a GlobalProvider");
-
+  }
   return context;
 };
 
