@@ -58,14 +58,12 @@
     },
     "extra": {
       "eas": {
-        "projectId": "6edb81f8-1850-4bfb-9e38-b98a0fa9d9b9"
+        "projectId": "5ec8d074-a58f-4095-87fc-9928ce1e950a"
       }
     },
     "runtimeVersion": {
       "policy": "appVersion"
     },
-    "updates": {
-      "url": "https://u.expo.dev/6edb81f8-1850-4bfb-9e38-b98a0fa9d9b9"
-    }
+    "owner": "muhoza"
   }
 }
