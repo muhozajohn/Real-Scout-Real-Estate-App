@@ -29,6 +29,9 @@ importers:
       babel-preset-expo:
         specifier: ^13.0.0
         version: 13.0.0(@babel/core@7.26.10)
+      expo:
+        specifier: ~53.0.17
+        version: 53.0.17(@babel/core@7.26.10)(@expo/metro-runtime@5.0.4(react-native@0.79.5(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0)))(react-native-webview@13.13.5(react-native@0.79.5(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.5(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0)
       expo-application:
         specifier: ~6.1.5
         version: 6.1.5(expo@53.0.17(@babel/core@7.26.10)(@expo/metro-runtime@5.0.4(react-native@0.79.5(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0)))(react-native-webview@13.13.5(react-native@0.79.5(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.5(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))
@@ -159,9 +162,6 @@ importers:
       eslint-config-expo:
         specifier: ~9.2.0
         version: 9.2.0(eslint@8.57.1)(typescript@5.8.3)
-      expo:
-        specifier: ~53.0.17
-        version: 53.0.17(@babel/core@7.26.10)(@expo/metro-runtime@5.0.4(react-native@0.79.5(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0)))(react-native-webview@13.13.5(react-native@0.79.5(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.5(@babel/core@7.26.10)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0)
       jest:
         specifier: ^29.2.1
         version: 29.7.0(@types/node@22.14.0)
