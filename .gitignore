@@ -31,11 +31,11 @@ yarn-error.*
 
 # local env files
 .env*.local
-.env.local
-.env.prod
-.env.production
 
 # typescript
 *.tsbuildinfo
 
 app-example
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
